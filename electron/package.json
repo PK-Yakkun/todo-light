@@ -14,7 +14,9 @@
     "build": "npm run build-renderer && npm run build-electron",
     "pack-app": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder",
-    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
+    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0",
@@ -33,10 +35,9 @@
     "typescript": "^4.0.5"
   },
   "build": {
-    "asar": true,
-    "files": [
-      "main",
-      "renderer/out"
-    ]
+    "appId": "your.id",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   }
 }
