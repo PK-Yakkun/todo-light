@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import Layout from "../components/Layout";
+import {
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  TextField,
+  Stack,
+  Typography,
+  Box,
+} from "@mui/material";
+import DeleteForever from "@mui/icons-material/DeleteForever";
 
 const IndexPage = () => {
   const [value, setValue] = useState<string>("");
@@ -25,32 +37,72 @@ const IndexPage = () => {
     };
   }, []);
 
-  const onSayHiClick = () => {
-    global.ipcRenderer.send("message", "hi from next");
-  };
-
   return (
-    <>
-      <ul>
+    <Box sx={{ padding: "20px" }}>
+      <Stack direction="row" alignItems="center" justifyContent="flex-end">
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          onClick={() => onPressDeleteButton()}
+        >
+          <IconButton>
+            <DeleteForever />
+          </IconButton>
+          <Typography
+            variant="caption"
+            color="gray"
+            sx={{ "&:hover": { cursor: "pointer" } }}
+          >
+            All Delete
+          </Typography>
+        </Stack>
+      </Stack>
+      <List>
         {listItem.map((item, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center" }}>
-            <input type="checkbox" id={`${index}`} />
-            <label htmlFor={`${index}`}>
-              <li style={{ listStyle: "none" }}>{item}</li>
-            </label>
-          </div>
+          <ListItem
+            key={index}
+            style={{ display: "flex", alignItems: "center", padding: 0 }}
+          >
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox sx={{ p: "5px" }} />}
+                label={item}
+              />
+            </FormGroup>
+          </ListItem>
         ))}
-      </ul>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={value}
-          type="text"
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button type="submit">追加</button>
+      </List>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          position: "fixed",
+          left: "0",
+          bottom: "0",
+          width: "100%",
+          boxSizing: "border-box",
+          padding: "20px",
+        }}
+      >
+        <Stack direction="row" justifyContent="flex-end" spacing={2}>
+          <TextField
+            id="standard-basic"
+            label="Todo"
+            variant="standard"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            sx={{ width: "100%" }}
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{ textTransform: "none" }}
+          >
+            Add
+          </Button>
+        </Stack>
       </form>
-      <button onClick={() => onPressDeleteButton()}>すべて破棄する</button>
-    </>
+    </Box>
   );
 };
 
