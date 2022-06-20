@@ -12,11 +12,11 @@ app.on("ready", async () => {
   await prepareNext("./renderer");
 
   const mainWindow = new BrowserWindow({
-    width: 300,
-    minWidth: 200,
-    height: 2000,
+    width: 280,
+    minWidth: 160,
+    height: 400,
     x: 99999,
-    y: 0,
+    y: 99999,
     // frame: false,
     opacity: 0.9,
     transparent: true,
