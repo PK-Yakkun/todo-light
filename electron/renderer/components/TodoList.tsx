@@ -1,12 +1,6 @@
-import {
-  Box,
-  List,
-  ListItem,
-  FormGroup,
-  FormControlLabel,
-} from "@mui/material";
+import { List, ListItem, FormGroup, FormControlLabel } from "@mui/material";
 import { Checkbox } from "@/components/Checkbox";
-import { getWindowDimensions } from "utils/getWindowDimensions";
+import { useEffect, useState } from "react";
 
 interface TodoListProps {
   listItem: string[];
@@ -17,9 +11,27 @@ interface TodoListProps {
  * @param listItem 登録されているリストアイテムのステート
  */
 export const TodoList = ({ listItem }: TodoListProps) => {
-  const dimention = getWindowDimensions();
+  // windowの高さを管理するステート
+  const [windowHeight, setWindowHeight] = useState<number>(400);
+
+  /**
+   * ウィンドウサイズを変更するたびにwindowHeightを更新
+   */
+  useEffect(() => {
+    const getWindwHeight = () => {
+      const windowDimensions = window.outerHeight;
+      return windowDimensions;
+    };
+
+    const changeWindowHeight = () => {
+      setWindowHeight(getWindwHeight());
+    };
+
+    window.addEventListener("resize", changeWindowHeight);
+  }, [windowHeight]);
+
   return (
-    <List sx={{ height: `${dimention.height - 160}px`, overflow: "scroll" }}>
+    <List sx={{ height: `${windowHeight - 160}px`, overflow: "scroll" }}>
       {listItem.map((item, index) => (
         <ListItem
           key={index}
