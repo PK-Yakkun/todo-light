@@ -31,7 +31,15 @@ export const TodoList = ({ listItem }: TodoListProps) => {
   }, [windowHeight]);
 
   return (
-    <List sx={{ height: `${windowHeight - 160}px`, overflow: "scroll" }}>
+    <List
+      sx={{
+        height: `${windowHeight - 160}px`,
+        overflow: "scroll",
+        " &::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
+    >
       {listItem.map((item, index) => (
         <ListItem
           key={index}
