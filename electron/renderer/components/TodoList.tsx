@@ -1,4 +1,13 @@
-import { List, ListItem, FormGroup, FormControlLabel } from "@mui/material";
+import {
+  List,
+  ListItem,
+  FormGroup,
+  FormControlLabel,
+  Stack,
+  IconButton,
+} from "@mui/material";
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
+import EditIcon from "@mui/icons-material/Edit";
 import { Checkbox } from "@/components/Checkbox";
 import { useEffect, useState } from "react";
 
@@ -46,16 +55,36 @@ export const TodoList = ({ listItem }: TodoListProps) => {
           style={{ display: "flex", alignItems: "center", padding: 0 }}
         >
           <FormGroup>
-            <FormControlLabel
-              control={<Checkbox />}
-              label={item}
-              sx={{
-                color: "#333",
-                "& .MuiInput-underline": {
-                  borderBottom: "1px solid #00d5bb",
-                },
-              }}
-            />
+            <Stack direction="row">
+              <FormControlLabel
+                control={<Checkbox />}
+                label={item}
+                sx={{
+                  color: "#333",
+                  "& .MuiInput-underline": {
+                    borderBottom: "1px solid #00d5bb",
+                  },
+                }}
+              />
+              <Stack
+                direction="row"
+                sx={{
+                  opacity: "0",
+                  "&:hover": {
+                    opacity: "0.6",
+                    cursor: "pointer",
+                    transition: ".5s",
+                  },
+                }}
+              >
+                <IconButton>
+                  <EditIcon />
+                </IconButton>
+                <IconButton>
+                  <CancelRoundedIcon />
+                </IconButton>
+              </Stack>
+            </Stack>
           </FormGroup>
         </ListItem>
       ))}
