@@ -95,7 +95,7 @@ export const TodoList = ({ listItem }: TodoListProps) => {
                 <SvgIcon sx={iconStyle}>
                   <EditIcon />
                 </SvgIcon>
-                <SvgIcon sx={iconStyle} onClick={() => onDeleteButton(index)}>
+                <SvgIcon sx={iconStyle}>
                   <CancelRoundedIcon />
                 </SvgIcon>
               </Stack>
