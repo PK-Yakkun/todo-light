@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormControlLabel,
   Stack,
+  SvgIcon,
   IconButton,
 } from "@mui/material";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
@@ -39,6 +40,15 @@ export const TodoList = ({ listItem }: TodoListProps) => {
     window.addEventListener("resize", changeWindowHeight);
   }, [windowHeight]);
 
+  const iconStyle = {
+    transition: ".5s",
+    cursor: "pointer",
+    opacity: ".4",
+    "&:hover": {
+      opacity: "1",
+    },
+  };
+
   return (
     <List
       sx={{
@@ -55,7 +65,14 @@ export const TodoList = ({ listItem }: TodoListProps) => {
           style={{ display: "flex", alignItems: "center", padding: 0 }}
         >
           <FormGroup>
-            <Stack direction="row">
+            <Stack
+              direction="row"
+              sx={{
+                "&:hover > div": {
+                  opacity: "0.6",
+                },
+              }}
+            >
               <FormControlLabel
                 control={<Checkbox />}
                 label={item}
@@ -68,21 +85,19 @@ export const TodoList = ({ listItem }: TodoListProps) => {
               />
               <Stack
                 direction="row"
+                alignItems="center"
+                spacing={1}
                 sx={{
                   opacity: "0",
-                  "&:hover": {
-                    opacity: "0.6",
-                    cursor: "pointer",
-                    transition: ".5s",
-                  },
+                  transition: ".5s",
                 }}
               >
-                <IconButton>
+                <SvgIcon sx={iconStyle}>
                   <EditIcon />
-                </IconButton>
-                <IconButton>
+                </SvgIcon>
+                <SvgIcon sx={iconStyle} onClick={() => onDeleteButton(index)}>
                   <CancelRoundedIcon />
-                </IconButton>
+                </SvgIcon>
               </Stack>
             </Stack>
           </FormGroup>
