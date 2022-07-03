@@ -22,7 +22,7 @@ const IndexPage = () => {
       <Stack direction="row" alignItems="center" justifyContent="flex-end">
         <AllDeleteButton setListItem={setListItem} />
       </Stack>
-      <TodoList listItem={listItem} />
+      <TodoList listItem={listItem} setListItem={setListItem} />
       <form
         onSubmit={handleSubmit}
         style={{

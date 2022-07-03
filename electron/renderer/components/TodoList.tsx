@@ -14,13 +14,14 @@ import { useEffect, useState } from "react";
 
 interface TodoListProps {
   listItem: string[];
+  setListItem(item: string[]): void;
 }
 
 /**
  * TodoList本体部分
  * @param listItem 登録されているリストアイテムのステート
  */
-export const TodoList = ({ listItem }: TodoListProps) => {
+export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
   // windowの高さを管理するステート
   const [windowHeight, setWindowHeight] = useState<number>(400);
 
@@ -47,6 +48,16 @@ export const TodoList = ({ listItem }: TodoListProps) => {
     "&:hover": {
       opacity: "1",
     },
+  };
+
+  const onRemoveButton = (index: number) => {
+    console.log("run onRemove");
+    const hoge = listItem;
+    console.log(`before: ` + hoge);
+    hoge.splice(index, 1);
+    console.log(`after: ` + hoge);
+    setListItem(hoge);
+    console.log(`set:` + hoge);
   };
 
   return (
@@ -95,7 +106,7 @@ export const TodoList = ({ listItem }: TodoListProps) => {
                 <SvgIcon sx={iconStyle}>
                   <EditIcon />
                 </SvgIcon>
-                <SvgIcon sx={iconStyle}>
+                <SvgIcon sx={iconStyle} onClick={() => onRemoveButton(index)}>
                   <CancelRoundedIcon />
                 </SvgIcon>
               </Stack>
