@@ -20,6 +20,7 @@ interface TodoListProps {
 /**
  * TodoList本体部分
  * @param listItem 登録されているリストアイテムのステート
+ * @param setListItem listItemの更新関数
  */
 export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
   // windowの高さを管理するステート
@@ -50,14 +51,13 @@ export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
     },
   };
 
+  /**
+   * 各リストの個別削除の処理
+   * @param index listItemのindex番号
+   */
   const onRemoveButton = (index: number) => {
-    console.log("run onRemove");
-    const hoge = listItem;
-    console.log(`before: ` + hoge);
-    hoge.splice(index, 1);
-    console.log(`after: ` + hoge);
-    setListItem(hoge);
-    console.log(`set:` + hoge);
+    const newListItems = listItem.filter((items, i) => i !== index);
+    setListItem(newListItems);
   };
 
   return (
@@ -65,6 +65,7 @@ export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
       sx={{
         height: `${windowHeight - 160}px`,
         overflow: "scroll",
+        overflowX: "scroll",
         " &::-webkit-scrollbar": {
           display: "none",
         },
@@ -88,9 +89,14 @@ export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
                 control={<Checkbox />}
                 label={item}
                 sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
                   color: "#333",
                   "& .MuiInput-underline": {
                     borderBottom: "1px solid #00d5bb",
+                  },
+                  "& .MuiTypography-root": {
+                    mt: "9.5px",
                   },
                 }}
               />
@@ -103,9 +109,6 @@ export const TodoList = ({ listItem, setListItem }: TodoListProps) => {
                   transition: ".5s",
                 }}
               >
-                <SvgIcon sx={iconStyle}>
-                  <EditIcon />
-                </SvgIcon>
                 <SvgIcon sx={iconStyle} onClick={() => onRemoveButton(index)}>
                   <CancelRoundedIcon />
                 </SvgIcon>
