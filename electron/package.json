@@ -3,7 +3,7 @@
   "main": "main/index.js",
   "productName": "Todo Light",
   "name": "todo_light",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
     "clean": "rimraf dist main renderer/out renderer/.next",
