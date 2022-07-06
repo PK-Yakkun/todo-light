@@ -1,8 +1,18 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { customTheme } from "styles/CustomTheme";
 import "../styles/globals.css";
+import { createTheme } from "@mui/material/styles";
+import { useState } from "react";
 
-function MyApp({ Component, pageProps }) {
+export function MyApp({ Component, pageProps }) {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const customTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#00d5bb",
+      },
+      mode: isDarkMode ? "dark" : "light",
+    },
+  });
   return (
     <ThemeProvider theme={customTheme}>
       <Component {...pageProps} />
