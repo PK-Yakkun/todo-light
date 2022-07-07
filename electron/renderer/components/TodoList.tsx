@@ -1,4 +1,4 @@
-// git chenge
+import { useEffect, useState } from "react";
 import {
   List,
   ListItem,
@@ -8,9 +8,7 @@ import {
   SvgIcon,
 } from "@mui/material";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
-import EditIcon from "@mui/icons-material/Edit";
 import { Checkbox } from "@/components/Checkbox";
-import { useEffect, useState } from "react";
 
 interface TodoListProps {
   listItem: string[];
