@@ -11,6 +11,10 @@ const IndexPage = () => {
   // Todoリストに登録されたリストアイテムを管理するステート
   const [listItem, setListItem] = useState<string[]>([]);
 
+  /**
+   * フォーム送信時に実行
+   * @param e テキストフィールドのイベント
+   */
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     value && setListItem([...listItem, value]);
@@ -18,7 +22,7 @@ const IndexPage = () => {
   };
 
   return (
-    <Box sx={{ padding: "20px" }}>
+    <Box sx={{ padding: "20px", "-webkit-app-region": "drag" }}>
       <Stack direction="row" alignItems="center" justifyContent="flex-end">
         <AllDeleteButton setListItem={setListItem} />
       </Stack>
@@ -37,7 +41,7 @@ const IndexPage = () => {
         <Stack direction="row" justifyContent="flex-end" spacing={2}>
           <TextField
             id="standard-basic"
-            label="Write Todo"
+            label="What to do?"
             variant="standard"
             value={value}
             onChange={(e) => setValue(e.target.value)}

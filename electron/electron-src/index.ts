@@ -18,6 +18,7 @@ app.on("ready", async () => {
     x: 99999,
     y: 99999,
     opacity: 0.95,
+    hasShadow: false,
     transparent: true,
     backgroundColor: "#CCffffff",
     titleBarStyle: "hidden",
