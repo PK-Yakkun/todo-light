@@ -4,11 +4,16 @@
   "productName": "Todo Light",
   "name": "todo_light",
   "version": "1.0.0",
-  "license": "UNLICENSED",
+  "author": "PK Yakkun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PK-Yakkun/todo-light/issues"
+  },
+  "homepage": "https://github.com/PK-Yakkun/todo-light#readme",
   "scripts": {
     "clean": "rimraf dist main renderer/out renderer/.next",
     "dev": "npm run build-electron && electron .",
-    "start": "npm run build-electron && electron .",
+    "start": "electron .",
     "build-renderer": "next build renderer && next export renderer",
     "build-electron": "tsc -p electron-src",
     "build": "npm run build-renderer && npm run build-electron && electron-builder",
