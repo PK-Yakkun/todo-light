@@ -4,7 +4,12 @@
   "productName": "Todo Light",
   "name": "todo_light",
   "version": "1.0.0",
-  "license": "UNLICENSED",
+  "author": "PK Yakkun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PK-Yakkun/todo-light/issues"
+  },
+  "homepage": "https://github.com/PK-Yakkun/todo-light#readme",
   "scripts": {
     "clean": "rimraf dist main renderer/out renderer/.next",
     "dev": "npm run build-electron && electron .",
