@@ -1,34 +1,57 @@
-import { useEffect } from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { useState } from "react";
+import { TextField, Stack, Box } from "@mui/material";
+import { AddButton } from "@/components/AddButton";
+import { AllDeleteButton } from "@/components/AllDeleteButton";
+import { TodoList } from "@/components/TodoList";
 
 const IndexPage = () => {
-  useEffect(() => {
-    const handleMessage = (_event, args) => alert(args)
+  // inputのvalueを管理するステート
+  const [value, setValue] = useState<string>("");
 
-    // add a listener to 'message' channel
-    global.ipcRenderer.addListener('message', handleMessage)
+  // Todoリストに登録されたリストアイテムを管理するステート
+  const [listItem, setListItem] = useState<string[]>([]);
 
-    return () => {
-      global.ipcRenderer.removeListener('message', handleMessage)
-    }
-  }, [])
-
-  const onSayHiClick = () => {
-    global.ipcRenderer.send('message', 'hi from next')
-  }
+  /**
+   * フォーム送信時に実行
+   * @param e テキストフィールドのイベント
+   */
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    value && setListItem([...listItem, value]);
+    setValue("");
+  };
 
   return (
-    <Layout title="Home | Next.js + TypeScript + Electron Example">
-      <h1>Hello Next.js 👋</h1>
-      <button onClick={onSayHiClick}>Say hi to electron</button>
-      <p>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-      </p>
-    </Layout>
-  )
-}
+    <Box sx={{ padding: "20px", "-webkit-app-region": "drag" }}>
+      <Stack direction="row" alignItems="center" justifyContent="flex-end">
+        <AllDeleteButton setListItem={setListItem} />
+      </Stack>
+      <TodoList listItem={listItem} setListItem={setListItem} />
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          position: "fixed",
+          left: "0",
+          bottom: "0",
+          width: "100%",
+          boxSizing: "border-box",
+          padding: "20px",
+        }}
+      >
+        <Stack direction="row" justifyContent="flex-end" spacing={2}>
+          <TextField
+            id="standard-basic"
+            label="What to do?"
+            variant="standard"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            sx={{ width: "100%", color: "#333" }}
+          />
+          <AddButton />
+        </Stack>
+      </form>
+    </Box>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
