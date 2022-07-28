@@ -1,7 +1,20 @@
 {
   "private": true,
   "main": "main/index.js",
-  "productName": "ElectronTypescriptNext",
+  "productName": "Todo Light",
+  "name": "todo_light",
+  "description": "It is a handy and convenient todo list!",
+  "keywords": [
+    "todo",
+    "todolist"
+  ],
+  "version": "0.0.0",
+  "author": "PK Yakkun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PK-Yakkun/todo-light/issues"
+  },
+  "homepage": "https://github.com/PK-Yakkun/todo-light#readme",
   "scripts": {
     "clean": "rimraf dist main renderer/out renderer/.next",
     "dev": "npm run build-electron && electron .",
