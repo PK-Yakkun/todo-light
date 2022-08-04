@@ -1,1 +1,23 @@
-# todo-light
+<h1 align="center">
+  <br>
+  <img src="https://user-images.githubusercontent.com/77062779/177794538-88cd394a-412b-4454-af3c-6003b8f43279.png" alt="Todo Light" width="200">
+  <br>
+  Todo Light
+  <br>
+</h1>
+
+## 📓 How To Use
+
+```bash
+# Clone this repository
+$ git clone https://github.com/PK-Yakkun/todo-light
+
+# Go into the repository
+$ cd electron
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn start
+```
