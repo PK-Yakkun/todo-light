@@ -21,3 +21,9 @@ $ yarn install
 # Run the app
 $ yarn start
 ```
+
+## 🎯 Features
+
+- Easiest to describe
+- Simple and straightforward functionality
+- Located at the very front and always visible
