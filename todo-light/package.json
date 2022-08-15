@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "main": "main/index.js",
   "productName": "Todo Light",
   "name": "todo_light",
@@ -8,7 +8,7 @@
     "todo",
     "todolist"
   ],
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "PK Yakkun",
   "license": "MIT",
   "bugs": {
