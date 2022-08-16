@@ -20,7 +20,7 @@
 $ git clone https://github.com/PK-Yakkun/todo-light
 
 # Go into the repository
-$ cd electron
+$ cd todo-light
 
 # Install dependencies
 $ yarn install
