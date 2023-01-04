@@ -8,29 +8,23 @@
 
 <div align="center">
 
-[![npm version](https://badge.fury.io/js/todo_light.svg)](https://badge.fury.io/js/todo_light)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</div>
+
+<div align="center">
+
+![スクリーンショット 2023-01-04 12 06 45](https://user-images.githubusercontent.com/77062779/210477614-884905db-e058-41a1-ad25-490c14c90bfa.png)
 
 </div>
 
 ## 📓 How To Use
 
-```bash
-# Clone this repository
-$ git clone https://github.com/PK-Yakkun/todo-light
-
-# Go into the repository
-$ cd todo-light
-
-# Install dependencies
-$ yarn install
-
-# Run the app
-$ yarn start
-```
+DL: https://drive.google.com/drive/folders/1bS8wdAnzwRQ-ZXcLFU9_pzn1sP3LWGyx?usp=share_link
 
 ## 🎯 Features
 
 - Easiest to describe
 - Simple and straightforward functionality
 - Located at the very front and always visible
+
